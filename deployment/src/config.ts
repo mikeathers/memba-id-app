@@ -5,6 +5,8 @@ interface ConfigProps {
   AWS_ACCOUNT_ID_DEV: string
   PROD_URL: string
   DEV_URL: string
+  PROD_HOSTED_ZONE: string
+  DEV_HOSTED_ZONE: string
 }
 
 const CONFIG: ConfigProps = {
@@ -14,6 +16,8 @@ const CONFIG: ConfigProps = {
   AWS_ACCOUNT_ID_DEV: '544312030237',
   PROD_URL: 'id.memba.co.uk',
   DEV_URL: 'id.dev.memba.co.uk',
+  PROD_HOSTED_ZONE: 'memba.co.uk',
+  DEV_HOSTED_ZONE: 'dev.memba.co.uk',
 }
 
 export default CONFIG

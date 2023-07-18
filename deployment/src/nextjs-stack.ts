@@ -36,6 +36,7 @@ export class NextJsStack extends Stack {
     const {stage} = props
     const isProduction = stage === 'prod'
     const url = isProduction ? CONFIG.PROD_URL : CONFIG.DEV_URL
+    const hostedZoneUrl = isProduction ? CONFIG.PROD_HOSTED_ZONE : CONFIG.DEV_HOSTED_ZONE
     const basePath = '.open-next'
 
     ////////////////////////////////////////////////////////////////
@@ -102,7 +103,7 @@ export class NextJsStack extends Stack {
     ////////////////////////////////////////////////////////////////
     // Create CloudFront Distribution and HTTP Config
     ////////////////////////////////////////////////////////////////
-    const hostedZone = getHostedZone({scope: this, domainName: url})
+    const hostedZone = getHostedZone({scope: this, domainName: hostedZoneUrl})
 
     const certificate = createCertificate({
       scope: this,
