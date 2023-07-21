@@ -2,13 +2,16 @@ import React from 'react'
 import type {CognitoUser} from '@aws-amplify/auth'
 import type {ISignUpResult} from 'amazon-cognito-identity-js'
 import type {Dispatch} from 'react'
+import {AxiosResponse} from 'axios'
 
 export type AuthContextValue = {
   state: AuthState
   dispatch: Dispatch<AuthReducerAction>
-  signUserIn: (props: LoginProps) => Promise<ChallengedUser>
+  signUserIn: (props: LoginFormDetails) => Promise<ChallengedUser>
   signUserOut: () => Promise<void>
-  registerUser: (props: RegisterUserProps) => Promise<ISignUpResult | undefined>
+  registerUser: (
+    props: SignupFormDetails,
+  ) => Promise<AxiosResponse<RegisterTenantResponse | BadResponse> | undefined>
   refreshUserSession: () => Promise<void | null>
   sendForgotPasswordLink: (email: string) => Promise<void>
   completeResetPassword: (props: CompletePasswordResetProps) => Promise<void>
@@ -18,7 +21,6 @@ export type AuthContextValue = {
   googleSignIn: () => Promise<void>
   appleSignIn: () => Promise<void>
   addUserToState: () => Promise<void>
-  registerTenant: (props: RegisterTenantProps) => Promise<void>
 }
 
 export interface AuthProviderProps {
@@ -73,8 +75,7 @@ export interface LoginProps {
 export interface RegisterUserProps {
   emailAddress: string
   password: string
-  firstName: string
-  lastName: string
+  fullName: string
 }
 
 export interface CompleteRegistrationProps {

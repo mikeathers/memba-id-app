@@ -1,10 +1,15 @@
 'use client'
 import type React from 'react'
 
-import {UnauthenticatedWrapper} from '@/components'
 import {Auth} from '@aws-amplify/auth'
 import {CONFIG} from '@/config'
-import {AuthProvider} from '@/context'
+import {AuthProvider, useAuth} from '@/context'
+import {Footer} from '@/components/footer'
+import {Container, Layout} from './app.styles'
+import {ToastContainer} from 'react-toastify'
+import {AppContent} from './app-content'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 export const App = ({children}: {children: React.ReactElement}) => {
   Auth.configure({
@@ -18,7 +23,23 @@ export const App = ({children}: {children: React.ReactElement}) => {
 
   return (
     <AuthProvider>
-      <UnauthenticatedWrapper>{children}</UnauthenticatedWrapper>
+      <Layout>
+        <AppContent>{children}</AppContent>
+        <Footer />
+        <ToastContainer
+          autoClose={false}
+          position="bottom-left"
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          className={'toast-position'}
+        />
+      </Layout>
     </AuthProvider>
   )
 }

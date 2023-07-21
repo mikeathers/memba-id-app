@@ -38,7 +38,7 @@ const margins = css<StyledButtonProps>`
 
 export const StyledButton = styled.button<StyledButtonProps>`
   ${margins};
-  border-radius: ${borderRadius.rounded};
+  border-radius: ${borderRadius.lightRounded};
   background-color: ${colors.blues800};
   color: ${colors.neutrals000};
   padding: 6px ${spacing.space4x};

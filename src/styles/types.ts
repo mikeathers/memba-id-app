@@ -93,6 +93,7 @@ export interface Colors {
   greys900: string
   neutrals000: string
   neutrals100: string
+  neutrals200: string
   neutrals500: string
 }
 

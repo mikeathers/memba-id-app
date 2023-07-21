@@ -1,6 +1,6 @@
 /* eslint-disable */
 import {confirmAccount} from '@/content'
-import {ConfirmAccount} from '@/domains'
+import {ConfirmAccount} from '../../app-pages'
 
 const ConfirmAccountPage = () => {
   const content = confirmAccount

@@ -10,12 +10,32 @@ declare global {
     tenantId?: string
   }
 
+  interface NewUserDetails {
+    emailAddress: string
+    password: string
+    firstName: string
+    lastName: string
+  }
+
   interface NewCustomerFormDetails extends FormikValues {
     emailAddress?: string
     password?: string
-    companyName?: string
     firstName?: string
     lastName?: string
+  }
+
+  interface SignupFormDetails extends FormikValues {
+    emailAddress: string
+    password: string
+    fullName: string
+  }
+
+  type ForgotPasswordFormDetails = Pick<SignupFormDetails, 'emailAddress'>
+  type ResetPasswordFormDetails = Pick<SignupFormDetails, 'password'>
+
+  interface LoginFormDetails extends FormikValues {
+    emailAddress: string
+    password: string
   }
 
   type FormikError =
@@ -59,8 +79,6 @@ declare global {
       message: string
       result: {
         id: string
-        tenantName: string
-        tier: string
         firstName: string
         lastName: string
         emailAddress: string
@@ -69,7 +87,8 @@ declare global {
         doorNumber: string
         townCity: string
         postCode: string
-        tenantUrl: string
+        tenantId: string
+        isTenantAdmin: boolean
       }
     }
   }
@@ -138,9 +157,84 @@ declare global {
     heading: string
     emailSentMessage: string
     confirmationInstruction: string
-    didntGetConfirmationEmail: string
+    resendConfirmationEmail: string
     checkSpamFolder: string
     sendAgain: string
+  }
+
+  type SignUpContent = {
+    appName: string
+    heading: string
+    termsOfService: string
+    login: string
+    userAlreadyExistsError: string
+    genericError: string
+    form: {
+      fullName: string
+      fullNamePlaceholder: string
+      email: string
+      emailPlaceholder: string
+      password: string
+      passwordPlaceholder: string
+      signUpCta: string
+      validation: {
+        passwordValidationMessage: string
+        passwordLengthMessage: string
+        emailAddress: string
+        emailAddressFormat: string
+        fullName: string
+        password: string
+      }
+    }
+  }
+
+  type LoginContent = {
+    appName: string
+    heading: string
+    signUp: string
+    cantLogin: string
+    genericError: string
+    userNotFoundError: string
+    incorrectUserNameOrPassword: string
+    form: {
+      email: string
+      emailPlaceholder: string
+      password: string
+      passwordPlaceholder: string
+      loginCta: string
+      validation: {
+        emailAddress: string
+        emailAddressFormat: string
+        password: string
+      }
+    }
+  }
+
+  type ForgotPasswordContent = {
+    heading: string
+    message: string
+    sendLinkCta: string
+    returnToLogin: string
+    form: {
+      emailPlaceholder: string
+      validation: {
+        emailAddress: string
+        emailAddressFormat: string
+      }
+    }
+  }
+
+  type ResetPasswordContent = {
+    heading: string
+    submitCta: string
+    form: {
+      passwordPlaceholder: string
+      validation: {
+        password: string
+        passwordValidationMessage: string
+        passwordLengthMessage: string
+      }
+    }
   }
 }
 

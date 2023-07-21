@@ -7,7 +7,7 @@ import mocked = jest.mocked
 
 import {mockCognitoUserAttributes, mockState} from '@/test-support'
 import {refreshJwt, removeItemFromLocalStorage, setItemInLocalStorage} from '@/utils'
-import type {ChallengedUser, RegisterTenantProps} from './auth.types'
+import type {ChallengedUser} from './auth.types'
 import {ActionTypes, AuthContext, initialState, useAuth} from './'
 import {TEMP_LOCAL_STORAGE_PWD_KEY} from '@/config'
 import {createTenantAccount} from '@/services'
@@ -217,18 +217,15 @@ describe('AuthContext', () => {
       await result.current.registerUser({
         emailAddress: testEmailAddress,
         password: testPassword,
-        firstName: testFirstName,
-        lastName: testLastName,
+        fullName: `${testFirstName} ${testLastName}`,
       })
 
       await waitFor(() =>
-        expect(Auth.signUp).toHaveBeenCalledWith({
-          username: testEmailAddress.trim().toLowerCase(),
+        expect(mockCreateTenantAccount).toHaveBeenCalledWith({
+          emailAddress: testEmailAddress.trim().toLowerCase(),
           password: testPassword,
-          attributes: {
-            family_name: testLastName,
-            given_name: testFirstName,
-          },
+          lastName: testLastName,
+          firstName: testFirstName,
         }),
       )
     })
@@ -238,8 +235,7 @@ describe('AuthContext', () => {
       await result.current.registerUser({
         emailAddress: testEmailAddress,
         password: testPassword,
-        firstName: testFirstName,
-        lastName: testLastName,
+        fullName: `${testFirstName} ${testLastName}`,
       })
 
       expect(mockSetItem).toHaveBeenCalledWith(TEMP_LOCAL_STORAGE_PWD_KEY, testPassword)
@@ -371,32 +367,6 @@ describe('AuthContext', () => {
           provider: CognitoHostedUIIdentityProvider.Apple,
         }),
       )
-    })
-  })
-
-  describe('Register Tenant', () => {
-    it('should return register tenant function', () => {
-      const {result} = renderUseAuth()
-      expect(result.current.registerTenant).toBeTruthy()
-    })
-
-    it('should call createTenantAccount service', async () => {
-      const {result} = renderUseAuth()
-
-      const registerTenantProps: RegisterTenantProps = {
-        firstName: 'test',
-        lastName: 'user',
-        emailAddress: 'test@test.com',
-        password: 'testPass1!',
-        companyName: 'test-company',
-        tier: 'Free',
-      }
-
-      await result.current.registerTenant(registerTenantProps)
-
-      await waitFor(() => {
-        expect(mockCreateTenantAccount).toHaveBeenCalledWith(registerTenantProps)
-      })
     })
   })
 })

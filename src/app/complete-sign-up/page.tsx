@@ -1,5 +1,5 @@
 /* eslint-disable */
-import {CompleteSignUp} from '@/domains'
+import {CompleteSignUp} from '../../app-pages'
 
 const CompleteSignUpPage = () => {
   return <CompleteSignUp />

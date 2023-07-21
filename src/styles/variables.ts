@@ -39,11 +39,12 @@ export const colors: Colors = {
   greys900: '#1F2128',
   neutrals000: '#FFFFFF',
   neutrals100: '#F5EFE3',
+  neutrals200: '#FAFBFC',
   neutrals500: '#B0A99C',
 }
 
 export const borderRadius: BorderRadius = {
-  lightRounded: '4px',
+  lightRounded: '3px',
   rounded: '8px',
   heavyRounded: '24px',
 }
@@ -118,7 +119,7 @@ export const fontSizes: FontSizes = {
 }
 
 export const fontWeights: FontWeights = {
-  regular: 400,
+  regular: 300,
   medium: 500,
   semibold: 600,
 }

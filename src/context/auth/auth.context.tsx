@@ -12,7 +12,6 @@ import {
   completeRegistration,
   completeResetPassword,
   googleSignIn,
-  registerTenant,
   registerUser,
   resendConfirmationEmail,
   sendForgotPasswordLink,
@@ -20,7 +19,7 @@ import {
   signUserOut,
 } from './auth.helpers'
 import {authReducer, initialState} from './auth.reducer'
-import type {AuthContextValue, AuthProviderProps, LoginProps} from './auth.types'
+import type {AuthContextValue, AuthProviderProps} from './auth.types'
 import {ActionTypes} from './auth.types'
 
 export const AuthContext = createContext<AuthContextValue | null>(null)
@@ -97,7 +96,7 @@ const useAuth = (): AuthContextValue => {
   }, [dispatch])
 
   const handleSignUserIn = useCallback(
-    async (props: LoginProps) => {
+    async (props: LoginFormDetails) => {
       const user = await signUserIn(props)
       await addUserToState()
       await refreshJwt()
@@ -122,7 +121,6 @@ const useAuth = (): AuthContextValue => {
     googleSignIn,
     appleSignIn,
     addUserToState,
-    registerTenant,
   }
 }
 

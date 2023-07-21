@@ -1,7 +1,7 @@
 import {Auth, CognitoHostedUIIdentityProvider} from '@aws-amplify/auth'
 
 import {TEMP_LOCAL_STORAGE_PWD_KEY} from '@/config'
-import {removeItemFromLocalStorage, setItemInLocalStorage} from '@/utils'
+import {removeItemFromLocalStorage, sentenceCase, setItemInLocalStorage} from '@/utils'
 
 import type {
   ChallengedUser,
@@ -14,17 +14,22 @@ import type {
 } from './auth.types'
 import {createTenantAccount} from '@/services'
 
-export const registerUser = async (props: RegisterUserProps) => {
-  const {emailAddress, password, firstName, lastName} = props
-  if (emailAddress && password && firstName) {
-    const result = await Auth.signUp({
-      username: emailAddress.trim().toLowerCase(),
+export const registerUser = async (props: SignupFormDetails) => {
+  console.log('here')
+  const {emailAddress, password, fullName} = props
+  if (emailAddress && password && fullName) {
+    const splitName = fullName.split(' ', 2)
+    const firstName = splitName[0]
+    const lastName = splitName[1]
+
+    const result = await createTenantAccount({
+      emailAddress: emailAddress.trim().toLowerCase(),
       password,
-      attributes: {
-        given_name: firstName.trim().toLowerCase(),
-        family_name: lastName.trim().toLowerCase(),
-      },
+      firstName: firstName.trim().toLowerCase(),
+      lastName: lastName.trim().toLowerCase(),
     })
+
+    console.log({result})
 
     setItemInLocalStorage(TEMP_LOCAL_STORAGE_PWD_KEY, password)
 
@@ -39,7 +44,7 @@ export const completeRegistration = async (props: CompleteRegistrationProps) => 
   }
 }
 
-export const signUserIn = async (props: LoginProps): Promise<ChallengedUser> => {
+export const signUserIn = async (props: LoginFormDetails): Promise<ChallengedUser> => {
   removeItemFromLocalStorage(TEMP_LOCAL_STORAGE_PWD_KEY)
 
   const {emailAddress, password} = props
@@ -74,6 +79,7 @@ export const completeResetPassword = async (props: CompletePasswordResetProps) =
 }
 
 export const resendConfirmationEmail = async (email: string) => {
+  console.log({email})
   if (email) {
     await Auth.resendSignUp(email)
   }
@@ -99,6 +105,6 @@ export const appleSignIn = async () => {
   })
 }
 
-export const registerTenant = async (props: RegisterTenantProps) => {
-  await createTenantAccount(props)
-}
+// export const registerTenant = async (props: RegisterTenantProps) => {
+//   await createTenantAccount(props)
+// }

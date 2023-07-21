@@ -110,7 +110,7 @@ describe('Complete sign up', () => {
     mockGetItemFromLocalStorage.mockReturnValue(mockPassword)
     renderComponent()
 
-    await waitFor(() => expect(mockPush).toHaveBeenCalledWith(PAGE_ROUTES.SIGN_IN))
+    await waitFor(() => expect(mockPush).toHaveBeenCalledWith(PAGE_ROUTES.LOGIN))
   })
 
   it('should push the user to the sign in page route if the users password is not found in local storage', async () => {
@@ -120,13 +120,13 @@ describe('Complete sign up', () => {
     mockGetItemFromLocalStorage.mockReturnValue(null)
     renderComponent()
 
-    await waitFor(() => expect(mockPush).toHaveBeenCalledWith(PAGE_ROUTES.SIGN_IN))
+    await waitFor(() => expect(mockPush).toHaveBeenCalledWith(PAGE_ROUTES.LOGIN))
   })
 
   it('should push the user to the sign in page route if an error occurs', async () => {
     mockUseSafeAsync.mockReturnValue({...useSafeAsyncMockState, error: new Error()})
     renderComponent()
 
-    await waitFor(() => expect(mockPush).toHaveBeenCalledWith(PAGE_ROUTES.SIGN_IN))
+    await waitFor(() => expect(mockPush).toHaveBeenCalledWith(PAGE_ROUTES.LOGIN))
   })
 })
