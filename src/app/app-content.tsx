@@ -13,7 +13,7 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
   const {children} = props
   const {
     refreshUserSession,
-    // state: {isAuthenticated},
+    state: {isAuthenticated},
   } = useAuth()
   const {run, isLoading, isSuccess} = useSafeAsync()
   const router = useRouter()
@@ -22,13 +22,13 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
     await run(refreshUserSession())
   }
 
-  // useEffect(() => {
-  //   if (!isAuthenticated) {
-  //     router.push(CONFIG.PAGE_ROUTES.LOGIN)
-  //   } else {
-  //     router.push(CONFIG.SITE_ROUTES.START)
-  //   }
-  // }, [isAuthenticated])
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push(CONFIG.PAGE_ROUTES.LOGIN)
+    } else {
+      router.push(CONFIG.SITE_ROUTES.START)
+    }
+  }, [isAuthenticated])
 
   useEffect(() => {
     runRefreshUserSession()

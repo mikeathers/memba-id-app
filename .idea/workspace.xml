@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e09cbbe-0f4b-4e6f-8a2c-7ac8c847115a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app-pages/forgot-password/forgot-password.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app-pages/forgot-password/forgot-password.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app-pages/login/login.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app-pages/login/login.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app-pages/reset-password/reset-password.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app-pages/reset-password/reset-password.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app-pages/signup/signup.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app-pages/signup/signup.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/button.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/button.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/button.styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/center-box/center-box.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/center-box/center-box.styles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loading-spinner/loading-spinner.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loading-spinner/loading-spinner.component.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="8e09cbbe-0f4b-4e6f-8a2c-7ac8c847115a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,7 +112,7 @@
       <updated>1689659065207</updated>
       <workItem from="1689659067347" duration="6362000" />
       <workItem from="1689701761169" duration="35731000" />
-      <workItem from="1689918163366" duration="3989000" />
+      <workItem from="1689918163366" duration="4531000" />
     </task>
     <servers />
   </component>
