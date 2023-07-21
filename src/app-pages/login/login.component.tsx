@@ -40,6 +40,7 @@ export const Login: React.FC<LoginProps> = (props) => {
     ) {
       setFetchError(content.incorrectUserNameOrPassword)
     } else if (error?.message) {
+      console.log({error})
       toast(
         <ErrorToast>
           <Text type={'body-bold'}>Something went wrong.</Text>
@@ -61,10 +62,6 @@ export const Login: React.FC<LoginProps> = (props) => {
       setEmailAddress(values.emailAddress)
       await run(signUserIn(values))
     }
-  }
-
-  const handleLogOut = () => {
-    signUserOut()
   }
 
   return (
