@@ -29,6 +29,7 @@ export const PAGE_ROUTES: PAGE_ROUTES = {
 
 export const DEV_SITE_ROUTES: SITE_ROUTES = {
   START: 'https://start.dev.memba.co.uk',
+  // START: 'http://localhost:3001',
 }
 
 export const PROD_SITE_ROUTES: SITE_ROUTES = {
@@ -97,12 +98,6 @@ export const PROD_CONFIG: CONFIG = {
   API_ROUTES: PROD_API_ROUTES,
   AMPLIFY: PROD_AMPLIFY,
   ENDPOINTS,
-}
-
-export enum TIERS {
-  FREE = 'Free',
-  BASIC = 'Basic',
-  PREMIUM = 'Premium',
 }
 
 export const CONFIG =

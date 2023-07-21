@@ -18,7 +18,6 @@ export const App = ({children}: {children: React.ReactElement}) => {
     path: process.env.NEXT_PUBLIC_COOKIE_STORAGE_PATH,
     expires: Number(process.env.NEXT_PUBLIC_COOKIE_STORAGE_EXPIRES),
   }
-  console.log({cookieStorage})
   Auth.configure({
     mandatorySignIn: false,
     region: 'eu-west-2',

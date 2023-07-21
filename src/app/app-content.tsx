@@ -4,6 +4,7 @@ import {useAuth} from '@/context'
 import {useSafeAsync} from '@/hooks'
 import {CONFIG} from '@/config'
 import {useRouter} from 'next/navigation'
+import {Loading} from '@/components'
 
 interface AppContentProps {
   children: React.ReactNode
@@ -11,10 +12,7 @@ interface AppContentProps {
 
 export const AppContent: React.FC<AppContentProps> = (props) => {
   const {children} = props
-  const {
-    refreshUserSession,
-    state: {isAuthenticated},
-  } = useAuth()
+  const {refreshUserSession, state} = useAuth()
   const {run, isLoading, isSuccess} = useSafeAsync()
   const router = useRouter()
 
@@ -23,18 +21,21 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
   }
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.push(CONFIG.PAGE_ROUTES.LOGIN)
-    } else {
-      router.push(CONFIG.SITE_ROUTES.START)
+    if (!state.isAuthenticating) {
+      if (!state.isAuthenticated) {
+        router.push(CONFIG.PAGE_ROUTES.LOGIN)
+      } else {
+        router.push(CONFIG.SITE_ROUTES.START)
+      }
     }
-  }, [isAuthenticated])
+  }, [state.isAuthenticated])
 
   useEffect(() => {
     runRefreshUserSession()
   }, [])
 
-  if (isLoading) return <div>Loading</div>
+  if (state.isAuthenticating) return <Loading />
+  if (isLoading) return <Loading />
 
   if (isSuccess) return <Container>{children}</Container>
 
