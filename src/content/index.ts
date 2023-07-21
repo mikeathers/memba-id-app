@@ -72,6 +72,7 @@ export const signUp: SignUpContent = {
     'By signing up, I accept the Memba Terms of Service and acknowledge the Privacy Policy.',
   login: 'Already have a memba account? Log in',
   userAlreadyExistsError: 'A user with the details you have provided already exists.',
+  fullNameRequireError: '*Please enter your first and last name.',
   genericError: 'Something has gone wrong, please try again later or get in touch.',
   form: {
     fullName: 'Full name:',

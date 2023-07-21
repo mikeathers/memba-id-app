@@ -26,7 +26,7 @@ export const registerUser = async (props: SignupFormDetails) => {
       emailAddress: emailAddress.trim().toLowerCase(),
       password,
       firstName: firstName.trim().toLowerCase(),
-      lastName: lastName.trim().toLowerCase(),
+      lastName: lastName ? lastName.trim().toLowerCase() : '',
     })
 
     console.log({result})

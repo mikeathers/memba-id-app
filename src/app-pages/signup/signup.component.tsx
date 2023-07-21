@@ -14,6 +14,7 @@ import {CONFIG} from '@/config'
 
 import {useUserFormStore} from '../stores'
 import {ErrorContainer, LoginContainer} from './signup.styles'
+import axios from 'axios'
 
 export interface SignUpProps {
   content: SignUpContent
@@ -86,6 +87,7 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
                 placeholder={content.form.fullNamePlaceholder}
                 onChange={handleChange('fullName')}
                 value={values.fullName}
+                autoComplete={'name'}
               />
               <TextInput
                 name={'emailAddress'}
@@ -93,6 +95,7 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
                 placeholder={content.form.emailPlaceholder}
                 onChange={handleChange('emailAddress')}
                 value={values.emailAddress}
+                autoComplete={'email'}
               />
               <TextInput
                 name={'password'}

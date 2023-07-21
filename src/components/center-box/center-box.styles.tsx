@@ -8,9 +8,10 @@ export const Container = styled.div`
   z-index: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   @media (${mediaQueries.s}) {
+    align-items: center;
     background-color: rgb(250, 251, 252);
     background-image: url(https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.456/static/media/default_left.e74de3ec.svg),
       url(https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.456/static/media/default_right.6ece9751.svg);

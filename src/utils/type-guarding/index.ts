@@ -1,5 +1,6 @@
 //ts-ignore
 //@typescript-eslint/no-explicit-any
+
 export const errorHasMessage = (obj: any): obj is Error => {
   return typeof obj === 'object' && 'message' in obj
 }
@@ -13,5 +14,9 @@ export const isHttpOKResponse = (obj: any): obj is OKResponse => {
 }
 
 export const isHttpBadResponse = (obj: any): obj is BadResponse => {
+  return 'message' in obj
+}
+
+export const isAxiosErrorWithMessage = (obj: any): obj is ErrorWithMessage => {
   return 'message' in obj
 }

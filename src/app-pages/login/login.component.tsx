@@ -89,6 +89,7 @@ export const Login: React.FC<LoginProps> = (props) => {
                 placeholder={content.form.emailPlaceholder}
                 onChange={handleChange('emailAddress')}
                 value={values.emailAddress}
+                autoComplete={'email'}
               />
               <TextInput
                 name={'password'}

@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="8e09cbbe-0f4b-4e6f-8a2c-7ac8c847115a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loading/loading.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loading/loading.component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loading/loading.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loading/loading.styles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app-pages/login/login.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app-pages/login/login.component.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app-pages/signup/signup.component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app-pages/signup/signup.component.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/center-box/center-box.styles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/center-box/center-box.styles.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/auth/auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/auth/auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/refresh-jwt/refresh-jwt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/refresh-jwt/refresh-jwt.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/auth/auth.helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/auth/auth.helpers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/type-guarding/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/type-guarding/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,26 +34,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/michaelatherton/Development/memba/memba-id-app/src/components/loading",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/michaelatherton/Development/memba/memba-id-app/node_modules/jest",
-    "nodejs_interpreter_path": "/Users/michaelatherton/.nvm/versions/node/v18.15.0/bin/node",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/michaelatherton/Development/memba/memba-id-app/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.nodejs",
-    "ts.external.directory.path": "/Users/michaelatherton/Development/memba/memba-id-app/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/michaelatherton/Development/memba/memba-id-app/src/components/loading&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/michaelatherton/Development/memba/memba-id-app/node_modules/jest&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/Users/michaelatherton/.nvm/versions/node/v18.15.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/michaelatherton/Development/memba/memba-id-app/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/michaelatherton/Development/memba/memba-id-app/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/loading" />
@@ -124,7 +124,7 @@
       <workItem from="1689659067347" duration="6362000" />
       <workItem from="1689701761169" duration="35731000" />
       <workItem from="1689918163366" duration="11897000" />
-      <workItem from="1689946808377" duration="2294000" />
+      <workItem from="1689946808377" duration="6384000" />
     </task>
     <servers />
   </component>

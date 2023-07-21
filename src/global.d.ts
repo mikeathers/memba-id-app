@@ -10,6 +10,10 @@ declare global {
     tenantId?: string
   }
 
+  type ErrorWithMessage = {
+    message: string
+  }
+
   interface NewUserDetails {
     emailAddress: string
     password: string
@@ -168,6 +172,7 @@ declare global {
     termsOfService: string
     login: string
     userAlreadyExistsError: string
+    fullNameRequireError: string
     genericError: string
     form: {
       fullName: string
