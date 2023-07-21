@@ -19,16 +19,22 @@ interface ResetPasswordProps {
 export const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
   const {content} = props
   const searchParams = useSearchParams()
-  const {completeResetPassword} = useAuth()
+  const {completeResetPassword, signUserIn} = useAuth()
   const {run, isSuccess, isLoading, isError} = useSafeAsync()
   const router = useRouter()
-
+  const [password, setPassword] = React.useState<string | undefined>(undefined)
   const code = searchParams?.get('code')
   const emailAddress = searchParams?.get('emailAddress')
 
+  const handleSignIn = async () => {
+    if (emailAddress && password) {
+      await run(signUserIn({emailAddress, password}))
+    }
+  }
   useEffect(() => {
     if (isSuccess) {
-      router.push(CONFIG.PAGE_ROUTES.LOGIN)
+      handleSignIn()
+      router.push(CONFIG.SITE_ROUTES.START)
     } else if (isError) {
       toast(
         <ErrorToast>
@@ -52,6 +58,7 @@ export const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 
   const handleSubmitForm = async (values: ResetPasswordFormDetails) => {
     if (values.password && emailAddress && code) {
+      setPassword(values.password)
       await run(completeResetPassword({emailAddress, code, password: values.password}))
     } else {
       toast(
@@ -74,7 +81,7 @@ export const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
         }}
         onSubmit={(values) => handleSubmitForm(values)}
         validationSchema={formSchema}
-        validateOnChange={true}
+        validateOnChange={false}
         validateOnBlur={false}
       >
         {({handleChange, handleSubmit, values, errors}) => {
@@ -86,6 +93,7 @@ export const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
                 placeholder={content.form.passwordPlaceholder}
                 onChange={handleChange('password')}
                 value={values.password}
+                type={'password'}
               />
 
               <ErrorContainer>
@@ -96,8 +104,17 @@ export const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
                 )}
               </ErrorContainer>
 
+              <Text
+                type={'caption'}
+                color={colorTokens.blues800}
+                $marginBottomX={spacingTokens.space4x}
+              >
+                {content.form.validation.passwordValidationMessage}
+              </Text>
+
               <Button
                 isLoading={isLoading}
+                isDisabled={isLoading}
                 variant={'primary'}
                 onClick={() => handleSubmit()}
                 $marginTopX={spacingTokens.space2x}

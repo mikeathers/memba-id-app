@@ -5,7 +5,6 @@ import {colors} from '@/styles'
 
 export const Layout = styled.div`
   position: relative;
-  background-color: ${colors.neutrals200};
 `
 
 export const Container = styled.div`

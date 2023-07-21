@@ -10,11 +10,11 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    if (!state.isAuthenticated) {
-      router.push(CONFIG.PAGE_ROUTES.LOGIN)
-    } else {
-      router.push(CONFIG.SITE_ROUTES.START)
-    }
+    // if (!state.isAuthenticated) {
+    //   router.push(CONFIG.PAGE_ROUTES.LOGIN)
+    // } else {
+    //   router.push(CONFIG.SITE_ROUTES.START)
+    // }
   }, [state.isAuthenticated])
 
   return null

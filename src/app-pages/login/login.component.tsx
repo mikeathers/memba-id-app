@@ -104,25 +104,30 @@ export const Login: React.FC<LoginProps> = (props) => {
 
               <ErrorContainer>
                 {errors.emailAddress && (
-                  <Text type={'body'} color={colorTokens.reds500}>
+                  <Text
+                    type={'caption'}
+                    color={colorTokens.reds500}
+                    $marginBottomX={spacingTokens.spaceHalfx}
+                  >
                     {errors.emailAddress}
                   </Text>
                 )}
 
                 {errors.password && (
-                  <Text type={'body'} color={colorTokens.reds500}>
+                  <Text type={'caption'} color={colorTokens.reds500}>
                     {errors.password}
                   </Text>
                 )}
 
                 {fetchError && (
-                  <Text type={'body'} color={colorTokens.reds500}>
+                  <Text type={'caption'} color={colorTokens.reds500}>
                     {fetchError}
                   </Text>
                 )}
               </ErrorContainer>
 
               <Button
+                isDisabled={isLoading}
                 isLoading={isLoading}
                 variant={'primary'}
                 onClick={() => handleSubmit()}
@@ -135,16 +140,6 @@ export const Login: React.FC<LoginProps> = (props) => {
           )
         }}
       </Formik>
-
-      <Button
-        isLoading={isLoading}
-        variant={'primary'}
-        onClick={() => handleLogOut()}
-        $marginTopX={spacingTokens.space2x}
-        type={'submit'}
-      >
-        Log out
-      </Button>
 
       <ActionsContainer>
         <Link

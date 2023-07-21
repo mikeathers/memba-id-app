@@ -91,6 +91,7 @@ export const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 
               <Button
                 isLoading={isLoading}
+                isDisabled={isLoading}
                 variant={'primary'}
                 onClick={() => handleSubmit()}
                 $marginTopX={spacingTokens.space2x}

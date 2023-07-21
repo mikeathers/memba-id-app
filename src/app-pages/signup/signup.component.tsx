@@ -105,25 +105,37 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
 
               <ErrorContainer>
                 {errors.fullName && (
-                  <Text type={'body'} color={colorTokens.reds500}>
+                  <Text
+                    type={'caption'}
+                    color={colorTokens.reds500}
+                    $marginBottomX={spacingTokens.spaceHalfx}
+                  >
                     {errors.fullName}
                   </Text>
                 )}
 
                 {errors.emailAddress && (
-                  <Text type={'body'} color={colorTokens.reds500}>
+                  <Text
+                    type={'caption'}
+                    color={colorTokens.reds500}
+                    $marginBottomX={spacingTokens.spaceHalfx}
+                  >
                     {errors.emailAddress}
                   </Text>
                 )}
 
                 {errors.password && (
-                  <Text type={'body'} color={colorTokens.reds500}>
+                  <Text
+                    type={'caption'}
+                    color={colorTokens.reds500}
+                    $marginBottomX={spacingTokens.spaceHalfx}
+                  >
                     {errors.password}
                   </Text>
                 )}
 
                 {fetchError && (
-                  <Text type={'body'} color={colorTokens.reds500}>
+                  <Text type={'caption'} color={colorTokens.reds500}>
                     {fetchError}
                   </Text>
                 )}
@@ -132,6 +144,7 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
               <Text type={'footnote'}>{content.termsOfService}</Text>
 
               <Button
+                isDisabled={isLoading}
                 isLoading={isLoading}
                 variant={'primary'}
                 onClick={() => handleSubmit()}
