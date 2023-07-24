@@ -35,8 +35,15 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
 
     if (error?.message.includes('already exists')) {
       setFetchError(content.userAlreadyExistsError)
-    } else if (error) {
+      return
+    }
+    if (error?.message.includes('Name')) {
+      setFetchError(content.fullNameRequireError)
+      return
+    }
+    if (error) {
       setFetchError(content.genericError)
+      return
     }
   }, [error, data, isLoading])
 

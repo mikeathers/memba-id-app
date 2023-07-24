@@ -22,7 +22,7 @@ export interface LoginProps {
 export const Login: React.FC<LoginProps> = (props) => {
   const {content} = props
   const router = useRouter()
-  const {signUserIn, signUserOut, state} = useAuth()
+  const {signUserIn} = useAuth()
   const {run, data, error, isLoading, isSuccess} = useSafeAsync()
   const [fetchError, setFetchError] = useState<string>('')
   const [emailAddress, setEmailAddress] = useState<string>('')

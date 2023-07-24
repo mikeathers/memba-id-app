@@ -1,5 +1,5 @@
 import React from 'react'
-import {errorHasMessage} from '@/utils'
+import {errorHasMessage, getErrorMessage, isAxiosErrorWithMessage} from '@/utils'
 
 import {useSafeAsyncReducer} from './use-safe-async.reducer'
 import type {
@@ -8,6 +8,7 @@ import type {
   UseSafeAsyncState,
 } from './use-safe-async.types'
 import {ActionTypes} from './use-safe-async.types'
+import axios, {AxiosError} from 'axios'
 
 const useSafeDispatch = <T>(dispatch: React.Dispatch<UseSafeAsyncReducerAction<T>>) => {
   const mounted = React.useRef(false)
@@ -62,6 +63,16 @@ export const useSafeAsync = <T>(
         safeDispatch({status: ActionTypes.RESOLVED, data: promiseData})
         return promiseData
       } catch (promiseError) {
+        if (axios.isAxiosError(promiseError)) {
+          const message = getErrorMessage(promiseError.response?.data)
+          const errorWithMessage = new Error(message)
+          safeDispatch({
+            status: ActionTypes.REJECTED,
+            error: errorWithMessage,
+          })
+          return errorWithMessage
+        }
+
         if (promiseError instanceof Error) {
           safeDispatch({status: ActionTypes.REJECTED, error: promiseError})
           return promiseError

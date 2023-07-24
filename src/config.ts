@@ -28,8 +28,8 @@ export const PAGE_ROUTES: PAGE_ROUTES = {
 }
 
 export const DEV_SITE_ROUTES: SITE_ROUTES = {
-  // START: 'https://start.dev.memba.co.uk',
-  START: 'http://localhost:3001',
+  START: 'https://start.dev.memba.co.uk',
+  // START: 'http://localhost:3001',
 }
 
 export const PROD_SITE_ROUTES: SITE_ROUTES = {
