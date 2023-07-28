@@ -12,9 +12,7 @@ import {useSafeAsync} from '@/hooks'
 import {useAuth} from '@/context'
 import {CONFIG} from '@/config'
 
-import {useUserFormStore} from '../stores'
 import {ErrorContainer, LoginContainer} from './signup.styles'
-import axios from 'axios'
 
 export interface SignUpProps {
   content: SignUpContent
@@ -23,10 +21,10 @@ export interface SignUpProps {
 export const SignUp: React.FC<SignUpProps> = (props) => {
   const {content} = props
   const router = useRouter()
-  const {setEmailAddress, setFullName, emailAddress} = useUserFormStore()
   const {registerUser} = useAuth()
   const {run, data, error, isLoading, isSuccess} = useSafeAsync()
   const [fetchError, setFetchError] = useState<string>('')
+  const [emailAddress, setEmailAddress] = useState<string>('')
 
   useEffect(() => {
     if (isSuccess) {
@@ -63,7 +61,6 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
   })
 
   const handleSubmitForm = async (values: SignupFormDetails) => {
-    setFullName(values.fullName)
     setEmailAddress(values.emailAddress)
     await run(registerUser(values))
   }
