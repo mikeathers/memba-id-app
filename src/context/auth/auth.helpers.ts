@@ -48,7 +48,10 @@ export const signUserIn = async (props: LoginFormDetails): Promise<ChallengedUse
   removeItemFromLocalStorage(TEMP_LOCAL_STORAGE_PWD_KEY)
 
   const {emailAddress, password} = props
-  const user = (await Auth.signIn(emailAddress, password)) as ChallengedUser
+  const user = (await Auth.signIn(
+    emailAddress.trim().toLowerCase(),
+    password,
+  )) as ChallengedUser
 
   // const res = await Auth.currentSession()
   // console.log('TOKEN: ', res.getIdToken())

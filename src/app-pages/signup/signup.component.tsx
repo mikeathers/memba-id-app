@@ -103,6 +103,7 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
                 onChange={handleChange('emailAddress')}
                 value={values.emailAddress}
                 autoComplete={'email'}
+                autoCapitalize={'off'}
               />
               <TextInput
                 name={'password'}
@@ -111,6 +112,7 @@ export const SignUp: React.FC<SignUpProps> = (props) => {
                 onChange={handleChange('password')}
                 value={values.password}
                 type={'password'}
+                autoCapitalize={'off'}
               />
 
               <ErrorContainer>

@@ -22,10 +22,14 @@ export interface LoginProps {
 export const Login: React.FC<LoginProps> = (props) => {
   const {content} = props
   const router = useRouter()
-  const {signUserIn} = useAuth()
+  const {signUserIn, resendConfirmationEmail} = useAuth()
   const {run, data, error, isLoading, isSuccess} = useSafeAsync()
   const [fetchError, setFetchError] = useState<string>('')
   const [emailAddress, setEmailAddress] = useState<string>('')
+
+  const handleResendConfirmationEmail = async () => {
+    await run(resendConfirmationEmail(emailAddress))
+  }
 
   useEffect(() => {
     if (isSuccess) {
@@ -34,13 +38,18 @@ export const Login: React.FC<LoginProps> = (props) => {
 
     if (error?.message && error.message.includes('User does not exist')) {
       setFetchError(content.userNotFoundError)
-    } else if (
-      error?.message &&
-      error.message.includes('Incorrect username or password')
-    ) {
+      return
+    }
+    if (error?.message && error.message.includes('Incorrect username or password')) {
       setFetchError(content.incorrectUserNameOrPassword)
-    } else if (error?.message) {
-      console.log({error})
+      return
+    }
+    if (error?.message && error.message.includes('User is not confirmed')) {
+      handleResendConfirmationEmail()
+      router.push(`${CONFIG.PAGE_ROUTES.CONFIRM_ACCOUNT}/?emailAddress=${emailAddress}`)
+      return
+    }
+    if (error) {
       toast(
         <ErrorToast>
           <Text type={'body-bold'}>Something went wrong.</Text>
@@ -90,6 +99,7 @@ export const Login: React.FC<LoginProps> = (props) => {
                 onChange={handleChange('emailAddress')}
                 value={values.emailAddress}
                 autoComplete={'email'}
+                autoCapitalize={'off'}
               />
               <TextInput
                 name={'password'}
@@ -98,6 +108,7 @@ export const Login: React.FC<LoginProps> = (props) => {
                 onChange={handleChange('password')}
                 value={values.password}
                 type={'password'}
+                autoCapitalize={'off'}
               />
 
               <ErrorContainer>

@@ -28,8 +28,7 @@ export const PAGE_ROUTES: PAGE_ROUTES = {
 }
 
 export const DEV_SITE_ROUTES: SITE_ROUTES = {
-  START: 'https://start.dev.memba.co.uk',
-  // START: 'http://localhost:3001',
+  START: process.env.NEXT_PUBLIC_START_APP_URL ?? '',
 }
 
 export const PROD_SITE_ROUTES: SITE_ROUTES = {

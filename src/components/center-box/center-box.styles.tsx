@@ -26,7 +26,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0px auto;
   padding: 32px 40px;
 
   @media (${mediaQueries.s}) {
@@ -48,5 +47,9 @@ export const TitleContainer = styled.div`
 `
 
 export const FormContainer = styled.div`
-  min-width: 300px;
+  width: 80vw;
+
+  @media (${mediaQueries.s}) {
+    width: 310px;
+  }
 `
