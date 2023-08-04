@@ -7,7 +7,7 @@ import {AxiosResponse} from 'axios'
 export type AuthContextValue = {
   state: AuthState
   dispatch: Dispatch<AuthReducerAction>
-  signUserIn: (props: LoginFormDetails) => Promise<ChallengedUser>
+  signUserIn: (props: LoginFormDetails) => Promise<ChallengedUser | null>
   signUserOut: () => Promise<void>
   registerUser: (
     props: SignupFormDetails,

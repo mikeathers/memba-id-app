@@ -34,8 +34,7 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
     runRefreshUserSession()
   }, [])
 
-  if (state.isAuthenticating) return <Loading />
-  if (isLoading) return <Loading />
+  if (state.isAuthenticating || isLoading) return <Loading />
 
   if (isSuccess) return <Container>{children}</Container>
 

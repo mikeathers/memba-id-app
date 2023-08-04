@@ -52,10 +52,12 @@ const PROD_API_ROUTES: API_ROUTES = {
 
 interface ENDPOINTS {
   CREATE_TENANT: string
+  ADMIN_CHECK: string
 }
 
 const ENDPOINTS: ENDPOINTS = {
   CREATE_TENANT: '/tenants/create-account',
+  ADMIN_CHECK: '/tenants/admin-check',
 }
 
 interface AMPLIFY {

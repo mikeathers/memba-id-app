@@ -1,18 +1,15 @@
 import {Auth, CognitoHostedUIIdentityProvider} from '@aws-amplify/auth'
 
 import {TEMP_LOCAL_STORAGE_PWD_KEY} from '@/config'
-import {removeItemFromLocalStorage, sentenceCase, setItemInLocalStorage} from '@/utils'
+import {removeItemFromLocalStorage, setItemInLocalStorage} from '@/utils'
 
 import type {
   ChallengedUser,
   ChangePasswordProps,
   CompletePasswordResetProps,
   CompleteRegistrationProps,
-  LoginProps,
-  RegisterTenantProps,
-  RegisterUserProps,
 } from './auth.types'
-import {createTenantAccount} from '@/services'
+import {adminCheck, createTenantAccount} from '@/services'
 
 export const registerUser = async (props: SignupFormDetails) => {
   console.log('here')
@@ -44,23 +41,33 @@ export const completeRegistration = async (props: CompleteRegistrationProps) => 
   }
 }
 
-export const signUserIn = async (props: LoginFormDetails): Promise<ChallengedUser> => {
+export const signUserIn = async (
+  props: LoginFormDetails,
+): Promise<ChallengedUser | null> => {
   removeItemFromLocalStorage(TEMP_LOCAL_STORAGE_PWD_KEY)
 
   const {emailAddress, password} = props
-  const user = (await Auth.signIn(
-    emailAddress.trim().toLowerCase(),
-    password,
-  )) as ChallengedUser
 
-  // const res = await Auth.currentSession()
-  // console.log('TOKEN: ', res.getIdToken())
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const isAdmin = await adminCheck({emailAddress})
+  console.log({isAdmin})
+  if (isAdmin) {
+    const user = (await Auth.signIn(
+      emailAddress.trim().toLowerCase(),
+      password,
+    )) as ChallengedUser
 
-  if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-    await Auth.completeNewPassword(user, password)
+    // const res = await Auth.currentSession()
+    // console.log('TOKEN: ', res.getIdToken())
+
+    if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
+      await Auth.completeNewPassword(user, password)
+    }
+
+    return user
+  } else {
+    return null
   }
-
-  return user
 }
 
 export const signUserOut = async () => {
